@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
+require('./models/db');
 
 const app = express();
 
