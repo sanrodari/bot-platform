@@ -1,3 +1,9 @@
 module.exports = {
-    "extends": "airbnb-base"
+  "extends": "airbnb-base",
+  "rules": {
+    "arrow-parens": [
+      2,
+      "as-needed"
+    ]
+  }
 };
