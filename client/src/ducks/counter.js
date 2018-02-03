@@ -1,4 +1,3 @@
-
 // Actions
 const INCREASE = 'counter/INCREASE';
 const DECREASE = 'counter/DECREASE';
@@ -14,7 +13,6 @@ export default function reducer(state = 0, action = {}) {
       return state;
   }
 }
-
 
 // Action creators
 export function increase() {
