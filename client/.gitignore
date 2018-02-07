@@ -1,0 +1,15 @@
+
+# Node packages required for build but not required in our Git Repo:
+/node_modules/
+
+# Build output directory
+/dist/
+
+#npm log
+npm-debug.log
+
+# User-specific stuff:
+.idea
+.env
+
+.DS_Store
