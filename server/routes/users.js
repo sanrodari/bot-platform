@@ -1,21 +1,10 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const jsonwebtoken = require('jsonwebtoken');
 
 const router = express.Router();
 
 const localStrategyAuth = require('../utils/localStrategy');
 const jwtStrategy = require('../utils/jwtStrategy');
-
-router.get('/', (req, res) => {
-  const Kitty = mongoose.model('Kitty');
-  Kitty.find(data => {
-    console.log(data);
-  });
-  res.json({
-    users: ['test', 'test2'],
-  });
-});
 
 router.post(
   '/login',
