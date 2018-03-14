@@ -1,7 +1,7 @@
-const moongose = require('mongoose');
+const mongoose = require('mongoose');
 
-const userSchema = moongose.Schema({
+const userSchema = mongoose.Schema({
   email: String,
   password: String,
 });
-moongose.model('User', userSchema);
+mongoose.model('User', userSchema);
