@@ -8,6 +8,11 @@ function validatePassword({ user, password }) {
   return bcrypt.compare(password, user.password);
 }
 
+function rejectLogin() {
+  const error = { message: 'Incorrect credentials.' };
+  return Promise.reject(error);
+}
+
 const localLogin = new passportLocal.Strategy(
   {
     usernameField: 'email',
@@ -17,8 +22,7 @@ const localLogin = new passportLocal.Strategy(
     findUserByEmail(email)
       .then(user => {
         if (!user) {
-          const error = { message: 'Incorrect credentials.' };
-          return Promise.reject(error);
+          return rejectLogin();
         }
 
         return Promise.all([
@@ -28,8 +32,7 @@ const localLogin = new passportLocal.Strategy(
       })
       .then(([user, match]) => {
         if (!match) {
-          const error = { message: 'Incorrect credentials.' };
-          return Promise.reject(error);
+          return rejectLogin();
         }
 
         done(null, user);
