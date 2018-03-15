@@ -3,9 +3,11 @@ const path = require('path');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
+require('dotenv').config();
+
+require('./models/db');
 const index = require('./routes/index');
 const users = require('./routes/users');
-require('./models/db');
 
 const app = express();
 
