@@ -17,10 +17,9 @@ function create(userId, params) {
     .save();
 }
 
-function update(userId, _id, params) {
-  return Bot
-    .updateOne({ _id, user: userId }, params)
-    .then(() => Bot.findOne({ _id, user: userId }));
+async function update(userId, _id, params) {
+  await Bot.updateOne({ _id, user: userId }, params);
+  return Bot.findOne({ _id, user: userId });
 }
 
 function findByUserAndId(userId, _id) {
