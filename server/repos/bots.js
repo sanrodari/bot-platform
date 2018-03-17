@@ -18,7 +18,7 @@ function create(userId, params) {
 }
 
 async function update(userId, _id, params) {
-  await Bot.updateOne({ _id, user: userId }, params);
+  await Bot.updateOne({ _id, user: userId }, { ...params, updatedAt: new Date() });
   return Bot.findOne({ _id, user: userId });
 }
 
