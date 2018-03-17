@@ -7,9 +7,9 @@ function findByUser(userId) {
     .find({ user: userId });
 }
 
-function create(user, body) {
+function create(user, params) {
   const bot = new Bot({
-    ...body,
+    ...params,
     user: user._id,
   });
 
@@ -17,9 +17,9 @@ function create(user, body) {
     .save();
 }
 
-function update(user, _id, body) {
+function update(user, _id, params) {
   return Bot
-    .updateOne({ _id, user: user._id }, body)
+    .updateOne({ _id, user: user._id }, params)
     .then(() => Bot.findOne({ _id, user: user._id }));
 }
 
