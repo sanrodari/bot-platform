@@ -4,10 +4,12 @@ const botsRepo = require('../repos/bots');
 
 const router = express.Router();
 
-router.get('/', (req, res) =>
+router.get('/', (req, res) => {
+  const { user: { id } } = req;
   botsRepo
-    .findByUser(req.user)
-    .then(result => res.json(result)));
+    .findByUser(id)
+    .then(result => res.json(result))
+});
 
 router.post('/', (req, res) =>
   botsRepo

@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const Bot = mongoose.model('Bot');
 
-function findByUser() {
+function findByUser(userId) {
   return Bot
-    .find();
+    .find({ user: userId });
 }
 
 function create(user, body) {
