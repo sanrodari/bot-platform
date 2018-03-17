@@ -7,30 +7,30 @@ function findByUser(userId) {
     .find({ user: userId });
 }
 
-function create(user, params) {
+function create(userId, params) {
   const bot = new Bot({
     ...params,
-    user: user._id,
+    user: userId,
   });
 
   return bot
     .save();
 }
 
-function update(user, _id, params) {
+function update(userId, _id, params) {
   return Bot
-    .updateOne({ _id, user: user._id }, params)
-    .then(() => Bot.findOne({ _id, user: user._id }));
+    .updateOne({ _id, user: userId }, params)
+    .then(() => Bot.findOne({ _id, user: userId }));
 }
 
-function findByUserAndId(user, _id) {
+function findByUserAndId(userId, _id) {
   return Bot
-    .findOne({ _id, user: user._id });
+    .findOne({ _id, user: userId });
 }
 
-function deleteByUserAndId(user, _id) {
+function deleteByUserAndId(userId, _id) {
   return Bot
-    .deleteOne({ _id, user: user._id });
+    .deleteOne({ _id, user: userId });
 }
 
 module.exports = {
