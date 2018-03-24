@@ -11,6 +11,7 @@ export default function Header() {
         <Link to="/" className="p2">Home</Link>
         <Link to="/test" className="p2">Test</Link>
         <Link to="/counter" className="p2">Counter</Link>
+        <Link to="/login" className="p2">Login</Link>
       </div>
     </header>
   );
