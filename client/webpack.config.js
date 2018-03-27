@@ -5,6 +5,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const envConfig = require('./src/utils/envConfig');
 
 module.exports = {
+  devServer: {
+    compress: true,
+    disableHostCheck: true,
+  },
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
