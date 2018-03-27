@@ -6,6 +6,7 @@ import swal from 'sweetalert2';
 const LOGIN = 'login/LOGIN';
 const LOGIN_SUCCESS = 'login/LOGIN_SUCCESS';
 const LOGIN_FAILED = 'login/LOGIN_FAILED';
+const LOGOUT = 'login/LOGOUT';
 
 const CHECK_AUTH = 'login/CHECK_AUTH';
 const CHECK_AUTH_SUCCESS = 'login/CHECK_AUTH_SUCCESS';
@@ -30,6 +31,7 @@ export default function reducer(state = initialState, action) {
 
     case CHECK_AUTH_FAILED:
     case LOGIN_FAILED:
+    case LOGOUT:
       return { ...state, isAuthenticated: false, loading: false };
 
     default:
@@ -73,5 +75,13 @@ export function processLogin({ email, password }) {
         type: 'error',
       });
     }
+  };
+}
+
+export function logout() {
+  return (dispatch) => {
+    localStorage.removeItem('access_token');
+    dispatch({ type: LOGOUT });
+    dispatch(push('/'));
   };
 }
