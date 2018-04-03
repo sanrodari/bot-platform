@@ -1,0 +1,27 @@
+$gray: #f5f5f6;
+$dark-blue: #005bb2;
+$white: #fff;
+$off-white: #fafafa;
+$blue: #69b6ff;
+
+$colors-list:(
+  gray: $gray,
+  'dark-blue': $dark-blue,
+  white: $white,
+  'off-white': $off-white,
+  blue: $blue,
+);
+
+@each $key, $val in $colors-list {
+  .#{$key} {
+    color: #{$val};
+  }
+
+  .#{$key}-bg {
+    background-color: #{$val};
+  }
+
+  .#{$key}-border {
+    border-color: #{$val};
+  }
+}

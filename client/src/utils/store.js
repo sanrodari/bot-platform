@@ -6,8 +6,17 @@ import reducers from '../ducks';
 export default function setupStore() {
   // eslint-disable-next-line
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  return createStore(
+  const store = createStore(
     reducers,
     composeEnhancers(applyMiddleware(thunk)),
   );
+
+  if (module.hot) {
+    module.hot.accept('../ducks', () => {
+      const nextRootReducer = require('../ducks/index');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
+
+  return store;
 }
