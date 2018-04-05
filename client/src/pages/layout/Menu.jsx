@@ -1,7 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default function Menu() {
+import { logout } from '../../ducks/user';
+
+function Menu({ isAuthenticated, handleLogout }) {
   return (
     <nav className="block navbar blue-bg">
       <div className="max-width-4 mx-auto">
@@ -16,10 +20,30 @@ export default function Menu() {
             <NavLink to="/counter">Counter</NavLink>
           </li>
           <li>
-            <NavLink to="/login">Login</NavLink>
+            {isAuthenticated ?
+              <a href="." onClick={handleLogout}>Logout</a> :
+              <NavLink to="/login">Login</NavLink>
+            }
           </li>
         </ul>
       </div>
     </nav>
   );
 }
+
+Menu.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  handleLogout: PropTypes.func.isRequired,
+};
+
+function mapStateToProps({ user: { isAuthenticated } }) {
+  return {
+    isAuthenticated,
+  };
+}
+
+const mapDispatchToProps = {
+  handleLogout: logout,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

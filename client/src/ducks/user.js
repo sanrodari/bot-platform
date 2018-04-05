@@ -11,6 +11,7 @@ const CHECK_AUTH_SUCCESS = 'user/CHECK_AUTH_SUCCESS';
 const CHECK_AUTH_FAILED = 'user/CHECK_AUTH_FAILED';
 
 const initialState = {
+  isAuthenticated: false,
   loading: false,
   email: null,
 };
@@ -25,13 +26,17 @@ export default function reducer(state = initialState, action = {}) {
     case LOGIN_SUCCESS:
     case CHECK_AUTH_SUCCESS: {
       const { user: { email } } = action;
-      return { ...state, loading: false, email };
+      return {
+        ...state, loading: false, email, isAuthenticated: true,
+      };
     }
 
     case LOGIN_FAILED:
     case LOGOUT:
     case CHECK_AUTH_FAILED:
-      return { ...state, loading: false, email: null };
+      return {
+        ...state, loading: false, email: null, isAuthenticated: false,
+      };
 
     default:
       return state;
