@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -37,8 +36,6 @@ export default class Login extends React.Component {
         >
           Login
         </button>
-        {get(this.props, 'user.email')}
-        {get(this.props, 'user.token')}
       </div>
     );
   }
