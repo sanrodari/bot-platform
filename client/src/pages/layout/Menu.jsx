@@ -21,7 +21,7 @@ function Menu({ isAuthenticated, handleLogout }) {
           </li>
           <li>
             {isAuthenticated ?
-              <a href="." onClick={handleLogout}>Logout</a> :
+              <NavLink to="/" onClick={handleLogout}>Logout</NavLink> :
               <NavLink to="/login">Login</NavLink>
             }
           </li>
