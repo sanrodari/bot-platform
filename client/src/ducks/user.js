@@ -1,3 +1,5 @@
+import { push } from 'react-router-redux';
+
 import * as usersApi from '../api/users';
 
 // Actions
@@ -54,7 +56,10 @@ export function login(email, password) {
         localStorage.setItem('access_token', token);
         return { ...user, token };
       })
-      .then(user => dispatch({ type: LOGIN_SUCCESS, user }))
+      .then((user) => {
+        dispatch({ type: LOGIN_SUCCESS, user });
+        dispatch(push('/'));
+      })
       .catch(() => dispatch({ type: LOGIN_FAILED }));
   };
 }
@@ -63,6 +68,7 @@ export function logout() {
   return (dispatch) => {
     localStorage.removeItem('access_token');
     dispatch({ type: LOGOUT });
+    dispatch(push('/'));
   };
 }
 
