@@ -15,6 +15,9 @@ export default function Menu() {
           <li>
             <NavLink to="/counter">Counter</NavLink>
           </li>
+          <li>
+            <NavLink to="/login">Login</NavLink>
+          </li>
         </ul>
       </div>
     </nav>

@@ -1,13 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { get } from 'lodash';
 
-import { login } from '../ducks/user';
-
-class Login extends React.Component {
-  state = {
-    email: '',
-    password: '',
+export default class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+    };
   }
 
   render() {
@@ -20,7 +21,7 @@ class Login extends React.Component {
             onChange={e => this.setState({ email: e.target.value })}
             type="text"
             value={email}
-            placeholder="Email..."
+            placeholder="Enter your email address"
           />
         </div>
         <div>
@@ -28,7 +29,7 @@ class Login extends React.Component {
             onChange={e => this.setState({ password: e.target.value })}
             type="password"
             value={password}
-            placeholder="Password..."
+            placeholder="Enter your password"
           />
         </div>
         <button
@@ -43,12 +44,6 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
-const mapDispatchToProps = {
-  login,
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);

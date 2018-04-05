@@ -1,4 +1,3 @@
-
 import nodeFetch from 'node-fetch';
 
 export const BaseUrl = BASE_URL;
