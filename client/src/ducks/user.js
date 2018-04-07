@@ -46,7 +46,7 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 // Action creators
-export function login(email, password) {
+export function login({ email, password }) {
   return (dispatch) => {
     usersApi
       .login(email, password)
