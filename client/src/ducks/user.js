@@ -1,4 +1,5 @@
 import { push } from 'react-router-redux';
+import swal from 'sweetalert2';
 
 import * as usersApi from '../api/users';
 
@@ -60,7 +61,14 @@ export function login({ email, password }) {
         dispatch({ type: LOGIN_SUCCESS, user });
         dispatch(push('/'));
       })
-      .catch(() => dispatch({ type: LOGIN_FAILED }));
+      .catch(() => {
+        dispatch({ type: LOGIN_FAILED });
+        swal({
+          title: 'Error',
+          text: 'Wrong email/password combination, please try again',
+          type: 'error',
+        });
+      });
   };
 }
 
@@ -83,7 +91,6 @@ export function checkAuth() {
 
     try {
       const user = await usersApi.me(accessToken);
-
       dispatch({ type: CHECK_AUTH_SUCCESS, user });
     } catch (error) {
       dispatch({ type: CHECK_AUTH_FAILED });
